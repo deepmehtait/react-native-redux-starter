@@ -1,4 +1,4 @@
-package com.reactreduxstarter;
+package com.counter;
 
 import android.app.Application;
 import android.util.Log;

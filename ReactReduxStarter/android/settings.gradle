@@ -1,3 +1,3 @@
-rootProject.name = 'ReactReduxStarter'
+rootProject.name = 'Counter'
 
 include ':app'

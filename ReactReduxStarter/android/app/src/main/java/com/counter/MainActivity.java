@@ -1,4 +1,4 @@
-package com.reactreduxstarter;
+package com.counter;
 
 import com.facebook.react.ReactActivity;
 
@@ -10,6 +10,6 @@ public class MainActivity extends ReactActivity {
      */
     @Override
     protected String getMainComponentName() {
-        return "ReactReduxStarter";
+        return "Counter";
     }
 }
