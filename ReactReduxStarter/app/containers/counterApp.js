@@ -19,6 +19,7 @@ class CounterApp extends Component {
     return (
       <Counter
         counter={state.count}
+        contactObj={state.contactObj}
         {...actions} />
     );
   }

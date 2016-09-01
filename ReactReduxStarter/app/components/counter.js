@@ -16,10 +16,14 @@ const styles = StyleSheet.create({
 export default class Counter extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      counterObj: ''
+    }
   }
 
   render() {
-    const { counter, increment, decrement, getcontacts } = this.props;
+    const { contactObj ,counter, increment, decrement, getcontacts } = this.props;
 
     return (
       <View style={{flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -30,6 +34,7 @@ export default class Counter extends Component {
         <TouchableOpacity onPress={decrement} style={styles.button}>
           <Text>down-or</Text>
         </TouchableOpacity>
+        <Text>{contactObj}</Text>
         <TouchableOpacity onPress={getcontacts} style={styles.button}>
           <Text>Get Contacts</Text>
         </TouchableOpacity>

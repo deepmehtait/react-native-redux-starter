@@ -19,7 +19,7 @@ export default function counter(state = initialState, action = {}) {
     case types.CONTACTS:
       return {
         ...state,
-        count: state.count +3
+        contactObj: action.payload
       }
     default:
       return state;
