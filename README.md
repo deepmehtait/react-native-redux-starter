@@ -1,2 +1,6 @@
 # react-native-redux-starter
-React Native with Redux integration
+
+Sample React-Native-Contact App
+`npm i`
+
+`react-native run-ios` | `react-native run-android`
