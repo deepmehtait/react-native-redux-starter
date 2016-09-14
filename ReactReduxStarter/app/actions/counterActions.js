@@ -1,5 +1,7 @@
 import * as types from './actionTypes';
 var Contacts = require('react-native-contacts')
+import ContactsWrapper from 'react-native-contacts-wrapper';
+
 export function increment() {
   return {
     type: types.INCREMENT
@@ -12,9 +14,62 @@ export function decrement() {
   };
 }
 
+export function openPicker() {
+  return (dispatch) => {
+    console.log('will open picker');
+    ContactsWrapper.getEmail()
+        .then((email) => {
+        console.log("email is", email);
+        dispatch({
+          type: types.CONTACTS,
+          payload: email,
+        });
+      })
+      .catch((error) => {
+        console.log("ERROR CODE: ", error.code);
+        console.log("ERROR MESSAGE: ", error.message);
+        dispatch({
+          type: types.CONTACTS,
+          payload: error.message,
+        });
+      });
+  }
+}
+
+export function openPickerAllDetails() {
+  return (dispatch) => {
+    console.log('will open picker- All Details -');
+    ContactsWrapper.getContact()
+        .then((contactObj) => {
+        console.log('contactObj ',contactObj);
+        console.log("email is", contactObj.email);
+        if(contactObj.email){
+          dispatch({
+            type: types.CONTACTS,
+            payload: contactObj.email,
+          });
+        } else {
+          dispatch({
+            type: types.CONTACTS,
+            payload: 'No Email',
+          });
+        }
+
+      })
+      .catch((error) => {
+        console.log("ERROR CODE: ", error.code);
+        console.log("ERROR MESSAGE: ", error.message);
+        dispatch({
+          type: types.CONTACTS,
+          payload: error.message,
+        });
+      });
+  }
+}
+
 export function getcontacts() {
   return (dispatch) => {
-    console.log('hello will now try to get contacts');
+    console.log('Background Contacts fetch');
     Contacts.getAll((err, contacts) => {
       if(err && err.type === 'permissionDenied'){
         console.log('permissionDenied');

@@ -2,4 +2,6 @@ rootProject.name = 'Counter'
 
 include ':app'
 include ':react-native-contacts'
+include ':react-native-contacts-wrapper'
 project(':react-native-contacts').projectDir = new File(settingsDir, '../node_modules/react-native-contacts/android')
+project(':react-native-contacts-wrapper').projectDir = new File(settingsDir, '../node_modules/react-native-contacts-wrapper/android/app')

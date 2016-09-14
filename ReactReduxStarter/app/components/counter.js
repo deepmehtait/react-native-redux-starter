@@ -23,7 +23,7 @@ export default class Counter extends Component {
   }
 
   render() {
-    const { contactObj ,counter, increment, decrement, getcontacts } = this.props;
+    const { contactObj ,counter, increment, decrement, getcontacts, openPicker, openPickerAllDetails } = this.props;
 
     return (
       <View style={{flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -32,11 +32,17 @@ export default class Counter extends Component {
           <Text>up</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={decrement} style={styles.button}>
-          <Text>down-or</Text>
+          <Text>down</Text>
         </TouchableOpacity>
         <Text>{contactObj}</Text>
         <TouchableOpacity onPress={getcontacts} style={styles.button}>
           <Text>Get Contacts</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={openPicker} style={styles.button}>
+          <Text>Open Picker</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={openPickerAllDetails} style={styles.button}>
+          <Text>Open Picker-All</Text>
         </TouchableOpacity>
       </View>
     );
