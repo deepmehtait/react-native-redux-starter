@@ -1,5 +1,6 @@
 import * as types from './actionTypes';
-var Contacts = require('react-native-contacts')
+var Promise = require("bluebird");
+var Contacts = Promise.promisifyAll(require('react-native-contacts'));
 import ContactsWrapper from 'react-native-contacts-wrapper';
 
 export function increment() {
@@ -69,20 +70,31 @@ export function openPickerAllDetails() {
 
 export function getcontacts() {
   return (dispatch) => {
-    console.log('Background Contacts fetch');
-    Contacts.getAll((err, contacts) => {
-      if(err && err.type === 'permissionDenied'){
-        console.log('permissionDenied');
-      } else if(err){
-        console.log('error', err);
-      } else {
-        console.log('contacts');
+    Contacts.getAllAsync().then(
+      contacts =>{
+        console.log('contacts-!',contacts);
         console.log(contacts[0].givenName);
         dispatch({
           type: types.CONTACTS,
           payload: contacts[0].givenName,
         });
+      },
+      err => {
+        console.log('err-!', err);
+        if(err && err.type === 'permissionDenied'){
+          console.log('permissionDenied');
+          dispatch({
+            type: types.CONTACTS,
+            payload: err.type,
+          });
+        } else if(err){
+          console.log('error', err);
+          dispatch({
+            type: types.CONTACTS,
+            payload: 'error',
+          });
+        }
       }
-    });
+    );
   };
 }

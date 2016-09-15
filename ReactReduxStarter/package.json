@@ -9,6 +9,7 @@
     "step2": "cd node_modules; find . -name .babelrc | grep -v packager | xargs rm"
   },
   "dependencies": {
+    "bluebird": "^3.4.6",
     "react": "15.3.1",
     "react-native": "0.33.0",
     "react-native-contacts": "^0.3.0",

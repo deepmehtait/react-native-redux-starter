@@ -36,7 +36,7 @@ export default class Counter extends Component {
         </TouchableOpacity>
         <Text>{contactObj}</Text>
         <TouchableOpacity onPress={getcontacts} style={styles.button}>
-          <Text>Get Contacts</Text>
+          <Text>Get Contacts with promise</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={openPicker} style={styles.button}>
           <Text>Open Picker</Text>
